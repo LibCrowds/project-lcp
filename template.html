@@ -11,107 +11,99 @@
         <div class="col-xs-12">
         	<h1>What is this item?</h1>
             <form id="transcription-form" role="form">
-              <div class="form-group">
-                <label for="title">Title/s:</label>
-                <span rel="popover" data-content="Copy the play title/s, including the articles at the front. *see tutorial to find out how to add accents." class="fa fa-question-circle question-popover"></span>
-                <input type="text" id="title" class="form-control" placeholder="Copy the play title/s, including the articles at the front.">
-              </div>
-              <div class="form-group">
-                <label for="author">Author/s:</label>
-                <span rel="popover" data-content="Copy author names as shown. Please separate multiple names with a semi colon." class="fa fa-question-circle question-popover"></span>
-                <input type="text" id="author" class="form-control" placeholder="Copy author names as shown. Please separate multiple names with a semi colon.">
-              </div>
-              <div class="form-group">
-                <label for="date">Date:</label>
-                <span rel="popover" data-content="Copy date as shown." class="fa fa-question-circle question-popover"></span>
-                <input type="text" id="date" class="form-control" placeholder="Copy date as shown.">
-              </div>
-              <div class="form-group">
-                <label for="reference">Reference Number:</label>
-                <span rel="popover" data-content="Five digit number, followed by folio number or capital letter (examples: '47300 ff. 941-961' or '43800 B')." class="fa fa-question-circle question-popover"></span>
-                <input type="text" id="reference" class="form-control" placeholder="Five digit number, followed by folio number or capital letter.">
-              </div>
-              <div class="form-group">
-                <label for="former-reference">License Number OR Year and Volume:</label>
-                <span rel="popover" data-content="Examples: License number 43 OR 1915/42." class="fa fa-question-circle question-popover">
-                </span>
-                <input type="text" class="form-control" id="former-reference" placeholder="Examples: License number 43 OR 1915/42.">
-              </div>
-              <div class="form-group">
-                <label for="other-information">Other Information:</label>
-                <span rel="popover" data-content="Transcribe any/all other information here." class="fa fa-question-circle question-popover">
-                </span>
-                <input type="text" class="form-control" id="other-information" placeholder="Transcribe any/all other information here.">
-              </div>
-              <hr>
-              <div class="text-right" role="group">
-                <a href="#" class="btn btn-success btn-answer" value="Done"><span class="fa fa-thumbs-o-up"></span> Done</a>
-              </div>
+				<div class="form-group">
+					<label for="title">Title/s:</label> 
+					<span rel="popover" data-content="Copy the play title/s, including any articles, such as 'the' at the front. *see tutorial to find out how to add accents." class="fa fa-question-circle question-popover"></span>
+					<input type="text" id="title" class="form-control" placeholder="Copy the play title/s, including any articles at the front.">
+				</div>
+				<div class="form-group">
+					<label for="author">Author/s:</label> 
+					<span rel="popover" data-content="Copy the authors as shown, separating any multiple authors with a semi colon." class="fa fa-question-circle question-popover"></span>
+					<input type="text" id="author" class="form-control" placeholder="Copy the authors as shown, separating any multiple authors with a semi colon.">
+				</div>
+				<div class="form-group">
+					<label for="date">Date:</label> 
+					<span rel="popover" data-content="Copy the date as shown (e.g. '6 May 2016')." class="fa fa-question-circle question-popover"></span>
+					<input type="text" id="date" class="form-control" placeholder="Copy the date as shown (e.g. '6 May 2016').">
+				</div>
+				<div class="form-group">
+					<label for="reference">Reference Number:</label> 
+					<span rel="popover" data-content="A five digit number, followed by folio numbers or a capital letter (examples: '47300 ff. 941-961' or '43800 B')." class="fa fa-question-circle question-popover"></span>
+					<input type="text" id="reference" class="form-control" placeholder="A five digit number, followed by folio numbers or a capital letter.">
+				</div>
+				<div class="form-group">
+					<label for="former-reference">License Number OR Year and Volume:</label> 
+					<span rel="popover" data-content="Examples: 'License number 43' or '1915/42'." class="fa fa-question-circle question-popover"></span>
+					<input type="text" class="form-control" id="former-reference" placeholder="License number 43' or '1915/42'.">
+				</div>
+				<div class="form-group">
+					<label for="other-information">Other Information:</label> 
+					<span rel="popover" data-content="Transcribe any/all other information here." class="fa fa-question-circle question-popover"></span>
+					<input type="text" class="form-control" id="other-information" placeholder="Transcribe any/all other information here.">
+				</div>
+				<hr>
+				<div class="text-right" role="group">
+					<a href="#" class="btn btn-success btn-answer" value="Done"><span class="fa fa-thumbs-o-up"></span> Done</a>
+				</div>
             </form>
-
+       
             <!-- Feedback items for the user -->
             <div class="padding-top-sm text-center">
                 <p>You are working on task: <span class="label label-default" id="task-id">#</span></p>
             </div>
-		</div>
+		</div>			
     </div>
 </div>
 
 <script>
-
-  /**Load the task.*/
-  pybossa.taskLoaded(function(task, deferred) {
-    if (!$.isEmptyObject(task)) {
-      var img = $('<img />');
-      img.load(function() {
-        deferred.resolve(task);
-      });
-      img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
-      img.addClass('img-thumbnail img-responsive');
-      task.info.image = img;
-    } else {
-      deferred.resolve(task);
-    }
-  });
-
-
-  /**Present the task.*/
-  pybossa.presentTask(function(task, deferred) {
-    $('#photo-link').html('').append(task.info.image);
-    $("#photo-link").attr("href", task.info.link);
-    $('#task-id').html(task.id);
-    if (!$.isEmptyObject(task)) {
-      $('#transcription-form').trigger("reset");
-      $('.btn-answer').off('click').on('click', function(evt) {
-        if (typeof $(this).attr("value") != 'undefined') {
-          task.answer = {
-            'image-title': task.info.title,
-            'title': $("#title").val(),
-            'author': $('#author').val(),
-            'date': $('#date').val(),
-            'reference': $('#reference').val(),
-            'former-reference': $('#former-reference').val(),
-            'other-information': $('#other-information').val()
-          }
-          console.log(task.answer);
-          pybossa.saveTask(task.id, task.answer)
-            .done(function() {
-              deferred.resolve();
-            })
-            .fail(function(e) {
-              pybossaNotify('Error: Answer submission failed', 'danger');
-            });
-
-        } else {
-        	pybossaNotify('Error: Form submission failed', 'danger');
-        }
-      });
-
-    } else {
-      $(".skeleton").hide();
-      pybossaNotify('Congratulations! You have participated in all available tasks!', 'success');
-    }
-  });
-
-  pybossa.run('lcp');
+	/**Load the task.*/
+	pybossa.taskLoaded(function(task, deferred) {
+		if (!$.isEmptyObject(task)) {
+			var img = $('<img />');
+			img.load(function() {
+			  deferred.resolve(task);
+			});
+			img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
+			img.addClass('img-thumbnail img-responsive');
+			task.info.image = img;
+		} else {
+			deferred.resolve(task);
+		}
+	});
+	
+	/**Present the task.*/
+	pybossa.presentTask(function(task, deferred) {
+		$('#photo-link').html('').append(task.info.image);
+		$("#photo-link").attr("href", task.info.link);
+		$('#task-id').html(task.id);
+		if (!$.isEmptyObject(task)) {
+			$('#transcription-form').trigger("reset");
+			$('.btn-answer').off('click').on('click', function(evt) {
+				if (typeof $(this).attr("value") != 'undefined') {
+					task.answer = {
+						'image-title': task.info.title,
+						'title': $("#title").val(),
+						'author': $('#author').val(),
+						'date': $('#date').val(),
+						'reference': $('#reference').val(),
+						'former-reference': $('#former-reference').val(),
+						'other-information': $('#other-information').val()
+					  }
+					console.log(task.answer);
+					pybossa.saveTask(task.id, task.answer).done(function() {
+						deferred.resolve();
+					}).fail(function(e) {
+						pybossaNotify('Error: Answer submission failed', 'danger');
+					});
+				} else {
+					pybossaNotify('Error: Form submission failed', 'danger');
+				}
+			});
+		} else {
+			$(".skeleton").hide();
+			pybossaNotify('Congratulations! You have participated in all available tasks!', 'success');
+		}
+	});
+  
+	pybossa.run('lcp');
 </script>
