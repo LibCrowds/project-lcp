@@ -59,59 +59,53 @@
 
 <script>
 
-  /**Load the task.*/
-  pybossa.taskLoaded(function(task, deferred) {
-    if (!$.isEmptyObject(task)) {
-      var img = $('<img />');
-      img.load(function() {
-        deferred.resolve(task);
-      });
-      img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
-      img.addClass('img-thumbnail img-responsive');
-      task.info.image = img;
-    } else {
-      deferred.resolve(task);
-    }
-  });
+    /** Load the task. */
+    pybossa.taskLoaded(function(task, deferred) {
+	if (!$.isEmptyObject(task)) {
+	    var img = $('<img />');
+	    img.load(function() {
+		deferred.resolve(task);
+	    });
+	    img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
+	    img.addClass('img-thumbnail img-responsive');
+	    task.info.image = img;
+	} else {
+	    deferred.resolve(task);
+	}
+    });
 
 
-  /**Present the task.*/
-  pybossa.presentTask(function(task, deferred) {
-    $('#photo-link').html('').append(task.info.image);
-    $("#photo-link").attr("href", task.info.link);
-    $('#task-id').html(task.id);
-    if (!$.isEmptyObject(task)) {
-      $('#transcription-form').trigger("reset");
-      $('.btn-answer').off('click').on('click', function(evt) {
-        if (typeof $(this).attr("value") != 'undefined') {
-          task.answer = {
-            'image-title': task.info.title,
-            'title': $("#title").val(),
-            'author': $('#author').val(),
-            'date': $('#date').val(),
-            'reference': $('#reference').val(),
-            'former-reference': $('#former-reference').val(),
-            'other-information': $('#other-information').val()
-          }
-          console.log(task.answer);
-          pybossa.saveTask(task.id, task.answer)
-            .done(function() {
-              deferred.resolve();
-            })
-            .fail(function(e) {
-              pybossaNotify('Error: Answer submission failed', 'danger');
-            });
-
-        } else {
-        	pybossaNotify('Error: Form submission failed', 'danger');
-        }
-      });
-
-    } else {
-      $(".skeleton").hide();
-      pybossaNotify('Congratulations! You have participated in all available tasks!', 'success');
-    }
-  });
-
+    /** Present the task. */
+    pybossa.presentTask(function(task, deferred) {
+	$('#photo-link').html('').append(task.info.image);
+	$("#photo-link").attr("href", task.info.link);
+	$('#task-id').html(task.id);
+	if (!$.isEmptyObject(task)) {
+	    $('#transcription-form').trigger("reset");
+	    $('.btn-answer').off('click').on('click', function(evt) {
+		if (typeof $(this).attr("value") != 'undefined') {
+		    task.answer = {
+			'title': $("#title").val(),
+			'author': $('#author').val(),
+			'date': $('#date').val(),
+			'reference': $('#reference').val(),
+			'former-reference': $('#former-reference').val(),
+			'other-information': $('#other-information').val()
+		    }
+		    console.log(task.answer);
+		    pybossa.saveTask(task.id, task.answer).done(function() {
+			deferred.resolve();
+		    }).fail(function(e) {
+			pybossaNotify('Error: Answer submission failed', 'danger');
+		    });
+		} else {
+		    pybossaNotify('Error: Form submission failed', 'danger');
+		}
+	    });
+	} else {
+	    $(".skeleton").hide();
+	    pybossaNotify('Congratulations! You have participated in all available tasks!', 'success');
+	}
+    });
   pybossa.run('lcp');
 </script>
