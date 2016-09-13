@@ -1,7 +1,7 @@
 {
     "name": "Lord Chamberlin's Plays",
     "short_name": "lord_chamberlins_plays",
-    "description": "Help electronically catalogue Lord Chamberlain’s Plays and Correspondence.",
+    "description": "Help create a catalogue of Lord Chamberlain’s Plays and Correspondence.",
     "webhook": "https://analyse.libcrowds.com",
     "category_id": 7,
     "splash": "https://cdn.rawgit.com/LibCrowds/project-convert-a-card/master/assets/splash.jpg",
