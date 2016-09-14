@@ -96,10 +96,10 @@
 		    pybossa.saveTask(task.id, task.answer).done(function() {
 			deferred.resolve();
 		    }).fail(function(e) {
-			pybossaNotify('Error: Answer submission failed', 'danger');
+			pybossaLogError(e);
 		    });
 		} else {
-		    pybossaNotify('Error: Form submission failed', 'danger');
+		    pybossaLogError(e);
 		}
 	    });
 	} else {
