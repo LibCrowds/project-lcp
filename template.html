@@ -58,7 +58,9 @@
 </div>
 
 <script>
+    var project_short_name = 'lord_chamberlins_plays';
 
+    
     /** Load the task. */
     pybossa.taskLoaded(function(task, deferred) {
 	if (!$.isEmptyObject(task)) {
@@ -99,7 +101,7 @@
 			pybossaLogError(e);
 		    });
 		} else {
-		    pybossaLogError(e);
+		    pybossaNotify('Error: Answer undefined', 'danger');
 		}
 	    });
 	} else {
@@ -107,5 +109,5 @@
 	    pybossaNotify('Congratulations! You have participated in all available tasks!', 'success');
 	}
     });
-  pybossa.run('lcp');
+    pybossa.run(project_short_name);
 </script>
