@@ -54,10 +54,10 @@
 			<input type="text" id="reference" class="form-control" placeholder="A five digit number, followed by folio numbers or a capital letter.">
 		    </div>
 		    <div class="form-group">
-			<label for="former-reference">License Number and/or Year and Volume:</label>
+			<label for="former_reference">License Number and/or Year and Volume:</label>
 			<span rel="popover" data-content="Examples: 'License number 43' and/or '1915/42'." class="fa fa-question-circle question-popover">
 			</span>
-			<input type="text" class="form-control" id="former-reference" placeholder="'License number 43' and/or '1915/42'.">
+			<input type="text" class="form-control" id="former_reference" placeholder="'License number 43' and/or '1915/42'.">
 		    </div>
 		    <div class="form-group">
 			<label for="other-information">Other Information:</label>
@@ -114,8 +114,8 @@
 			'author': $('#author').val(),
 			'date': $('#date').val(),
 			'reference': $('#reference').val(),
-			'former-reference': $('#former-reference').val(),
-			'other-information': $('#other-information').val()
+			'former_reference': $('#former_reference').val(),
+			'other_information': $('#other_information').val()
 		    }
 		    console.log(task.answer);
 		    pybossa.saveTask(task.id, task.answer).done(function() {
