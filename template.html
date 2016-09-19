@@ -60,7 +60,7 @@
 <script>
     var project_short_name = 'lord_chamberlins_plays';
 
-    
+
     /** Load the task. */
     pybossa.taskLoaded(function(task, deferred) {
 	if (!$.isEmptyObject(task)) {
@@ -109,5 +109,14 @@
 	    pybossaNotify('Congratulations! You have participated in all available tasks!', 'success');
 	}
     });
+
+
+    $( document ).ready(function() {
+	/** Add Latin character map to title and author. */
+	$('#transcription-form #title').specialedit('latin');
+	$('#transcription-form #author').specialedit('latin');
+    });
+
+    
     pybossa.run(project_short_name);
 </script>
