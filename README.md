@@ -56,8 +56,8 @@ and ensuring that there are no rows with 'Unanalysed' in the *info* column.
 #### 3. Submit the data
 
 1. Download the results CSV file for the project from the [LibCrowds Data](http://www.libcrowds.com/data) page.
-2. Copy the *info_title*, *info_author*, *info_date*, *info_reference*, *info_former-reference* and *info_other-information*
-   columns into an ALEPH load spreadsheet.
+2. Copy the *info_title*, *info_author*, *info_date*, *info_reference*, *info_former_reference*
+   and *info_other_information* columns into an ALEPH load spreadsheet.
 3. Submit this file to metadata services.
 
 **Important:** If any changes are subsequently made, for example, if certain records are not able to be
