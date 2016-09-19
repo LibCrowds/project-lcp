@@ -5,4 +5,4 @@ catalogue. The information on these cards can vary, please make sure you
 record all the information on the card. But don’t worry if there isn’t
 information for all the fields present on the card. There will always be at
 least a play title. Transcribe it in natural language, putting any articles at
-the front. You can find more detailed guidance on the [Tutorial Page](./tutorial).
+the front. You can find more detailed guidance on the [tutorial page](./tutorial).
