@@ -9,10 +9,10 @@ The workflow established for LCP projects is as follows:
 
 #### 1. Create a new project
 
-The following steps describe how to create a new project using
-[pybossa-github-builder](https://github.com/alexandermendes/pybossa-github-builder):
-
 1. Create a [new project](http://www.libcrowds.com/project/new).
+    - The suggested format for the name is *LCP: 1824-1899 (Abbe-Belles)*.
+    - The suggested format for the short name is *lcp_1824-1899_abbe-belles*.
+    - Enter any text into the long description field, it will be replaced automatically during the next few steps.
 2. Select Dashboard from the side menu then Sync with GitHub.
 3. Enter the URL of this page (https://github.com/LibCrowds/project-lcp) and click Continue.
 4. Scroll to the bottom of the following page and click Update.
@@ -24,9 +24,10 @@ The following steps describe how to create a new project using
 8. Once all tasks are imported, from the Dashboard click Task Redundancy.
 9. Enter **2** and click Set Redundancy.
 10. To publish the project visit the Dashboard again and click Publish.
-    - **Note:** To make this a featured project contact a LibCrowds administrator.
 
-Note that there are various other ways to create new projects, all of which are
+**Note:** The steps above describe how to create a new project using
+[pybossa-github-builder](https://github.com/alexandermendes/pybossa-github-builder).
+There are various other ways to create new projects, all of which are
 described in the [PyBossa documentation](http://docs.pybossa.com/en/latest/user/overview.html).
 
 
@@ -65,6 +66,21 @@ ingested, the associated results should be updated on the system by visiting
 `https://analyse.libcrowds.com/<project_short_name>/<result-id>`. This ensures that we can later
 identify the cards that still need to be processed by alternative means. The result ID can be found
 in the results CSV file.
+
+
+## Uploading images to Flickr
+
+Below are some basic guidelines for uploading images to Flickr, for further help
+please refer to the Flickr documentation.
+
+1. Log in to [Flickr](https://www.flickr.com) using the LibCrowds credentials.
+2. Click the upload icon at the top right of the screen.
+3. Select your images.
+    - **Important:** Wait until all images have loaded before proceeding! To check,
+    scroll to the bottom of the window and wait for the thumbnails to appear.
+4. Click All on the toolbar to select all images.
+5. Click **Add to albums** and create a new album for **this specific LibCrowds project**.
+6. Click **Upload n Photos** at the top right of the screen.
 
 
 ## Downloading images
