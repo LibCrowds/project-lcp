@@ -4,6 +4,6 @@
     "description": "Help create a catalogue of Lord Chamberlain’s Plays and Correspondence.",
     "webhook": "https://analyse.libcrowds.com",
     "category_id": 7,
-    "splash": "https://cdn.rawgit.com/LibCrowds/project-lcp/master/assets/splash.jpg",
+    "splash": "https://cdn.jsdelivr.net/gh/LibCrowds/project-lcp@master/assets/splash.jpg",
     "splash_attribution": "Image: © <a href=\"http://www.lensintheface.com\" target=\"_blank\">Jon Ellis</a>"
 }
